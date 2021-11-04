@@ -1,13 +1,11 @@
 USE [master]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Free]    Script Date: 10.08.2020 14:05:41 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 CREATE PROCEDURE [dbo].[Free]
 AS
@@ -39,14 +37,5 @@ EXEC sp_MSforeachdb @command
 
 --SELECT * FROM #res WHERE Physical_Name LIKE 'D:\%' ORDER BY TotalSize
 SELECT * FROM #res ORDER BY Available desc
-DROP TABLE #res
-
---SELECT * FROM sys.database_files
-
---SELECT * FROM sys.dm_db_log_space_usage
-
---SELECT * FROM sys.database_files
---USE tempdb; DBCC shrinkfile('temp7')
-
 GO
 
