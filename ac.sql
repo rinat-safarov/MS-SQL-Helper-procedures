@@ -1,4 +1,4 @@
-CREATE PROCEDURE dbo.ac
+CREATE PROCEDURE [dbo].[ac]
 AS
 DECLARE @curdate DATETIME = GETDATE()
 SELECT	ss.Host_Name,
