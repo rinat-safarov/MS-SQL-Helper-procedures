@@ -25,7 +25,7 @@ SELECT	ss.Host_Name,
 		s.text,
 		ss.program_name
 FROM	sys.dm_exec_requests r   
-		JOIN	sys.databases  AS d
+		JOIN	sys.databases AS d
 			ON	d.database_id = r.database_id   
 		OUTER APPLY sys.dm_exec_sql_text(r.sql_handle)s
 LEFT JOIN	sys.dm_exec_Sessions ss
