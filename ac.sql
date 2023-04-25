@@ -30,7 +30,7 @@ FROM	sys.dm_exec_requests r
 		OUTER APPLY sys.dm_exec_sql_text(r.sql_handle)s
 LEFT JOIN	sys.dm_exec_Sessions ss
 			ON	ss.session_id = r.session_id
-WHERE	r.sql_handle IS NOT       NULL
+WHERE	r.sql_handle IS NOT NULL
 ORDER BY
 	r.start_time
 GO
