@@ -4,12 +4,12 @@ CREATE TABLE #ind(index_id INT, [object_id] INT, [name] SYSNAME NULL, fill_facto
 
 INSERT INTO #ind
 SELECT i.index_id, i.[object_id], i.name, i.fill_factor, i.data_space_id, i.[type]
-FROM sys.dm_db_index_usage_stats ddius
-  INNER JOIN sys.indexes i 
-    ON i.object_id=ddius.object_id 
-      AND i.index_id=ddius.index_id
-WHERE ddius.last_user_update IS NULL
-
+from sys.dm_db_index_usage_stats ddius
+inner join sys.indexes i on i.object_id=ddius.object_id and i.index_id=ddius.index_id
+where ddius.last_user_seek is null
+  and ddius.last_user_scan is null
+  and ddius.last_user_lookup is null
+ 
 SELECT	object_schema_name(ddius.[object_id])+'.'+OBJECT_NAME(ddius.[object_id]),
       	OBJECT_NAME(ddius.[object_id]),
       	i.ind_type,
